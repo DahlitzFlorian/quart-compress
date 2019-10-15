@@ -1,0 +1,49 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- master
+
+jobs:
+- job: 'Test_Matrix'
+  strategy:
+    matrix:
+      Linux_Python36:
+        vmImage: 'ubuntu-latest'
+        python.version: '3.6'
+      Linux_Python37:
+        vmImage: 'ubuntu-latest'
+        python.version: '3.7'
+      Mac_Python36:
+        vmImage: 'macos-latest'
+        python.version: '3.6'
+      Mac_Python37:
+        vmImage: 'macos-latest'
+        python.version: '3.7'
+      Windows_Python36:
+        vmImage: 'windows-latest'
+        python.version: '3.6'
+      Windows_Python37:
+        vmImage: 'windows-latest'
+        python.version: '3.7'
+    maxParallel: 2
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+      architecture: 'x64'
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: 'Install dependencies'
+  - script: |
+      pip install pytest
+      python -m pytest --junitxml=junit/test-results.xml
+    displayName: 'pytest'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/test-results.xml'
+      testRunTitle: 'Python $(python.version)'
+    condition: succeededOrFailed()

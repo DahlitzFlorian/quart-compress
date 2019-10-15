@@ -1,5 +1,7 @@
 # Quart-Compress
 
+[![Build Status](https://dev.azure.com/fdahlitz/quart-compress/_apis/build/status/DahlitzFlorian.quart-compress?branchName=master)](https://dev.azure.com/fdahlitz/quart-compress/_build/latest?definitionId=6&branchName=master)
+
 ## Description
 
 > Quart is a Python ASGI web microframework.
