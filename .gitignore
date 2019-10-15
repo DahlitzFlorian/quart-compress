@@ -7,3 +7,8 @@ __pycache__/
 
 # venv
 venv/
+
+# distribution
+*egg-info/
+build/
+dist/
