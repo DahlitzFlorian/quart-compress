@@ -10,21 +10,12 @@ jobs:
 - job: 'Test_Matrix'
   strategy:
     matrix:
-      Linux_Python36:
-        vmImage: 'ubuntu-latest'
-        python.version: '3.6'
       Linux_Python37:
         vmImage: 'ubuntu-latest'
         python.version: '3.7'
-      Mac_Python36:
-        vmImage: 'macos-latest'
-        python.version: '3.6'
       Mac_Python37:
         vmImage: 'macos-latest'
         python.version: '3.7'
-      Windows_Python36:
-        vmImage: 'windows-latest'
-        python.version: '3.6'
       Windows_Python37:
         vmImage: 'windows-latest'
         python.version: '3.7'
