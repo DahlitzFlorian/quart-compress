@@ -6,6 +6,7 @@ build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
 module = "quart_compress"
+dist-name = "quart-compress2"
 author = "Florian Dahlitz"
 author-email = "f2dahlitz@freenet.de"
 home-page = "https://github.com/DahlitzFlorian/quart-compress"
