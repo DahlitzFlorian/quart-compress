@@ -18,6 +18,19 @@ As I wanted to seamlessly migrate from Flask to Quart and noticed, that there ar
 
 Installing the package is as easy as:
 
-```
+```bash
 $ pip install quart-compress2
+```
+
+
+## Usage
+
+To compress your Quart responses, you only need to compress your Quart object at the beginning using the `Compress` class:
+
+```python
+from quart import Quart
+from quart_compress import Compress
+
+app = Quart(__name__)
+Compress(app)
 ```
