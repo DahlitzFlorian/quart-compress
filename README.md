@@ -12,3 +12,12 @@
 -- [Quart Project](https://github.com/pgjones/quart)
 
 As I wanted to seamlessly migrate from Flask to Quart and noticed, that there are a few issues in using [Flask-Compress](https://github.com/shengulong/flask-compress) together with Quart, I decided to create my own Quart-Compress packages, which is based on the Flask-Compress project.
+
+
+## Installation
+
+Installing the package is as easy as:
+
+```
+$ pip install quart-compress2
+```
