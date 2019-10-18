@@ -25,6 +25,7 @@ setenv =
     PYTHONPATH = {toxinidir}
 deps =
     pytest
+    pytest-asyncio
 commands =
     pytest
 """
