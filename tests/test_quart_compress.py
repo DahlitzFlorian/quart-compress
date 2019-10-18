@@ -33,18 +33,5 @@ class DefaultsTest(unittest.TestCase):
         self.assertEqual(self.app.config["COMPRESS_MIN_SIZE"], 500)
 
 
-class InitTests(unittest.TestCase):
-    def setUp(self):
-        self.app = Quart(__name__)
-        self.app.testing = True
-
-    def test_constructor_init(self):
-        Compress(self.app)
-
-    def test_delayed_init(self):
-        compress = Compress()
-        compress.init_app(self.app)
-
-
 if __name__ == "__main__":
     unittest.main()
