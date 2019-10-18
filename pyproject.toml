@@ -1,0 +1,44 @@
+[build-system]
+requires = [
+    "flit",
+    "quart",]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "quart_compress"
+author = "Florian Dahlitz"
+author-email = "f2dahlitz@freenet.de"
+home-page = "https://github.com/DahlitzFlorian/quart-compress"
+classifiers = ["License :: OSI Approved :: MIT License"]
+requires = [
+    "quart",]
+requires-python = ">=3.7"
+description-file = "README.md"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = true
+envlist = py37, py38
+[testenv]
+setenv =
+    PYTHONPATH = {toxinidir}
+deps =
+    pytest
+commands =
+    pytest
+"""
+
+[tool.black]
+line-length = 88
+py37 = true
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''

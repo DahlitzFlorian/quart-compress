@@ -1,3 +1,4 @@
+""" Quart Compress: Compresses your quart responses """
 import asyncio
 
 from gzip import GzipFile
