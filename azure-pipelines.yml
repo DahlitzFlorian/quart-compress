@@ -34,7 +34,7 @@ stages:
           architecture: 'x64'
       - script: |
           python -m pip install --upgrade pip
-          pip install pytest flit pytest-azurepipelines
+          pip install pytest flit pytest-azurepipelines pytest-asyncio
           flit install
         displayName: 'Install dependencies'
       - script: |
@@ -63,7 +63,7 @@ stages:
             architecture: 'x64'
       - script: |
           python -m pip install --upgrade pip
-          pip install flit pytest pytest-azurepipelines codecov pytest-cov
+          pip install flit pytest pytest-azurepipelines codecov pytest-cov pytest-asyncio
           flit install
         displayName: 'Install dependencies'
       - script: |
