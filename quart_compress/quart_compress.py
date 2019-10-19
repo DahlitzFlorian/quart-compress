@@ -4,7 +4,7 @@ import asyncio
 from gzip import GzipFile
 from io import BytesIO
 
-from quart import request, current_app
+from quart import request, current_app, Quart
 
 
 class DictCache:
@@ -39,7 +39,7 @@ class Compress:
         if app is not None:
             self.init_app(app)
 
-    def init_app(self, app):
+    def init_app(self: Compress, app: Quart) -> None:
         defaults = [
             (
                 "COMPRESS_MIMETYPES",
