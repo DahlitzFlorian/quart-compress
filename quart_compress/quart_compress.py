@@ -3,8 +3,12 @@ import asyncio
 
 from gzip import GzipFile
 from io import BytesIO
+from typing import Union, AnyStr
 
 from quart import request, current_app, Quart
+from quart.local import LocalProxy
+
+from .typing import ResponseWrapper as Response
 
 
 class DictCache:
@@ -28,7 +32,7 @@ class Compress:
     :type app: :class:`quart.Quart` or None
     """
 
-    def __init__(self, app=None):
+    def __init__(self, app: Quart = None) -> None:
         """
         An alternative way to pass your :class:`quart.Quart` application
         object to Quart-Compress. :meth:`init_app` also takes care of some
@@ -39,7 +43,7 @@ class Compress:
         if app is not None:
             self.init_app(app)
 
-    def init_app(self: Compress, app: Quart) -> None:
+    def init_app(self, app: Quart) -> None:
         defaults = [
             (
                 "COMPRESS_MIMETYPES",
@@ -68,7 +72,7 @@ class Compress:
         if app.config["COMPRESS_REGISTER"] and app.config["COMPRESS_MIMETYPES"]:
             app.after_request(self.after_request)
 
-    async def after_request(self, response):
+    async def after_request(self, response: Response) -> Response:
         app = self.app or current_app
         accept_encoding = request.headers.get("Accept-Encoding", "")
 
@@ -93,7 +97,7 @@ class Compress:
         else:
             gzip_content = await self.compress(app, response)
 
-        response.set_data(gzip_content)
+        response.set_data(gzip_content)  # type: ignore
 
         response.headers["Content-Encoding"] = "gzip"
         response.headers["Content-Length"] = response.content_length
@@ -107,17 +111,19 @@ class Compress:
 
         return response
 
-    async def compress(self, app, response):
+    async def compress(
+        self, app: Union[Quart, LocalProxy], response: Response
+    ) -> bytes:
         gzip_buffer = BytesIO()
 
         if asyncio.iscoroutine(response.get_data()):
             data = await response.get_data()
         else:
-            data = response.get_data()
+            data = str(response.get_data())
 
         with GzipFile(
             mode="wb", compresslevel=app.config["COMPRESS_LEVEL"], fileobj=gzip_buffer
         ) as gzip_file:
-            gzip_file.write(data)
+            gzip_file.write(data)  # type: ignore
 
         return gzip_buffer.getvalue()

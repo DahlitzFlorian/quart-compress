@@ -12,6 +12,9 @@ venv/
 # mypy
 .mypy_cache/
 
+# idea
+.idea/
+
 # distribution
 *egg-info/
 build/

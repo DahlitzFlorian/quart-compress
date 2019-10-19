@@ -1,5 +1,7 @@
 [run]
-source=wily
+source=quart_compress
+omit =
+    quart_compress/typing.py
 [report]
 exclude_lines =
     # Have to re-enable the standard pragma
