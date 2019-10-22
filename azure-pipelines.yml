@@ -34,11 +34,11 @@ stages:
           architecture: 'x64'
       - script: |
           python -m pip install --upgrade pip
-          pip install pytest flit pytest-azurepipelines pytest-asyncio
+          pip install pytest flit pytest-azurepipelines pytest-asyncio Flask-Caching
           flit install
         displayName: 'Install dependencies'
       - script: |
-          pip install pytest
+          pip install pytest Flask-Caching
           python -m pytest tests/ --junitxml=junit/test-results.xml
         displayName: 'pytest'
       - task: PublishTestResults@2
@@ -63,7 +63,7 @@ stages:
             architecture: 'x64'
       - script: |
           python -m pip install --upgrade pip
-          pip install flit pytest pytest-azurepipelines codecov pytest-cov pytest-asyncio
+          pip install flit pytest pytest-azurepipelines codecov pytest-cov pytest-asyncio Flask-Caching
           flit install
         displayName: 'Install dependencies'
       - script: |

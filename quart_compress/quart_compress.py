@@ -66,7 +66,7 @@ class Compress:
             app.config.setdefault(k, v)
 
         backend = app.config["COMPRESS_CACHE_BACKEND"]
-        self.cache = backend() if backend else None
+        self.cache = backend if backend else None
         self.cache_key = app.config["COMPRESS_CACHE_KEY"]
 
         if app.config["COMPRESS_REGISTER"] and app.config["COMPRESS_MIMETYPES"]:
@@ -92,7 +92,7 @@ class Compress:
 
         if self.cache:
             key = self.cache_key(response)
-            gzip_content = self.cache.get(key) or self.compress(app, response)
+            gzip_content = self.cache.get(key) or await self.compress(app, response)
             self.cache.set(key, gzip_content)
         else:
             gzip_content = await self.compress(app, response)
@@ -119,7 +119,7 @@ class Compress:
         if asyncio.iscoroutine(response.get_data()):
             data = await response.get_data()
         else:
-            data = str(response.get_data())
+            data = str(response.get_data())  # pragma: no cover
 
         with GzipFile(
             mode="wb", compresslevel=app.config["COMPRESS_LEVEL"], fileobj=gzip_buffer
