@@ -37,3 +37,15 @@ from quart_compress import Compress
 app = Quart(__name__)
 Compress(app)
 ```
+
+If you have to add a bunch of configuration to your application, you may need to instantiate the `Compress` object later using `init_app`:
+
+```python
+from quart import Quart
+from quart_compress import Compress
+
+app = Quart(__name__)
+compress = Compress()
+# some more configurations
+compress.init_app(app)
+```
