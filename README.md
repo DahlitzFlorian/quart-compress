@@ -3,7 +3,7 @@
 [![Build Status](https://dev.azure.com/fdahlitz/quart-compress/_apis/build/status/DahlitzFlorian.quart-compress?branchName=master)](https://dev.azure.com/fdahlitz/quart-compress/_build/latest?definitionId=6&branchName=master)
 [![codecov](https://codecov.io/gh/DahlitzFlorian/quart-compress/branch/master/graph/badge.svg)](https://codecov.io/gh/DahlitzFlorian/quart-compress)
 [![PyPI version](https://badge.fury.io/py/quart-compress2.svg)](https://badge.fury.io/py/quart-compress2)
-[![Python Support](https://img.shields.io/badge/Python-%3E%3D%203.7-blue)](https://img.shields.io/badge/Python-%3E%3D%203.7-blue)
+[![Python Support](https://img.shields.io/badge/Python-3.7%20|%203.8-blue)](https://img.shields.io/badge/Python-3.7%20|%203.8-blue)
 
 ## Description
 
