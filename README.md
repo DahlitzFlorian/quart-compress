@@ -5,6 +5,7 @@
 [![PyPI version](https://badge.fury.io/py/quart-compress2.svg)](https://badge.fury.io/py/quart-compress2)
 [![Python Support](https://img.shields.io/badge/Python-3.7%20|%203.8-blue)](https://img.shields.io/badge/Python-3.7%20|%203.8-blue)
 ![black](https://img.shields.io/badge/code%20style-black-000000.svg)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 
 ## Description
 
