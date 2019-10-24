@@ -13,7 +13,7 @@ from quart_compress import Compress
 _ROOT = Path(".").resolve()
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def setup_with_sizes():
     app = Quart(__name__)
     app.testing = True
@@ -36,7 +36,7 @@ def setup_with_sizes():
     return (app, small_size, large_size)
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def setup(setup_with_sizes):
     app, _, _ = setup_with_sizes
 
