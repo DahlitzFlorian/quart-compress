@@ -34,16 +34,20 @@ class Compress:
 
     def __init__(self, app: Quart = None) -> None:
         """
-        An alternative way to pass your :class:`quart.Quart` application
-        object to Quart-Compress. :meth:`init_app` also takes care of some
-        default `settings`_.
-        :param app: the :class:`quart.Quart` application object.
+        The default way to pass your :class:`quart.Quart` application object
+        to Quart-Compress.
         """
         self.app = app
         if app is not None:
             self.init_app(app)
 
     def init_app(self, app: Quart) -> None:
+        """
+        An alternative way to pass your :class:`quart.Quart` application
+        object to Quart-Compress. :meth:`init_app` also takes care of some
+        default `settings`_.
+        :param app: the :class:`quart.Quart` application object.
+        """
         defaults = [
             (
                 "COMPRESS_MIMETYPES",
