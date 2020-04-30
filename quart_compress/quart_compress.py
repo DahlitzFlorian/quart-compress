@@ -120,7 +120,7 @@ class Compress:
     ) -> bytes:
         gzip_buffer = BytesIO()
 
-        if asyncio.iscoroutine(response.get_data()):
+        if asyncio.iscoroutinefunction(response.get_data):
             data = await response.get_data()
         else:
             data = str(response.get_data())  # pragma: no cover
