@@ -1,15 +1,17 @@
 """ Quart Compress: Compresses your quart responses """
+from __future__ import annotations
+
 import asyncio
 
 from gzip import GzipFile
 from io import BytesIO
-from typing import Union, AnyStr
+from typing import TYPE_CHECKING, Union, AnyStr
 
 from quart import request, current_app, Quart
-from quart.local import LocalProxy
 
-from .typing import ResponseWrapper as Response
-
+if TYPE_CHECKING:
+    from .typing import ResponseWrapper as Response
+    from werkzeug.local import LocalProxy
 
 class DictCache:
     def __init__(self):
